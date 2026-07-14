@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SHAKTHI VEL S-Institue-portal </title>
+</head>
+    <link rel="stylesheet" href="style.css">
+<body>
+
+    <header>
+        <h1>Techno Automation Institution</h1>
+        <h4>Founder: SHAKTHI VEL S</h4>
+    </header>
+
+    <nav>
+        <a href="#">Home</a> |
+        <a href="#">Courses</a> |
+        <a href="#">Register</a> |
+        <a href="#">Contact</a>
+    </nav>
+
+
+    <h2>Student Registration Form</h2>
+
+    <form id="registrationForm">
+
+        <label>Full Name:</label><br>
+        <input type="text" id="name"><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" id="email"><br><br>
+
+        <label>Mobile Number:</label><br>
+        <input type="text" id="mobile"><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <br><br>
+
+        <label>Department:</label><br>
+        <input type="text" id="department"><br><br>
+
+        <label>Course:</label><br>
+        <select id="course">
+            <option value="">Select Course</option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+            <option>Python</option>
+            <option>Java</option>
+            <option>C++</option>
+            <option>UI/UX Design</option>
+        </select>
+        <br><br>
+
+        <label>Skills:</label><br>
+        <input type="checkbox" value="HTML"> HTML
+        <input type="checkbox" value="CSS"> CSS
+        <input type="checkbox" value="JavaScript"> JavaScript
+        <input type="checkbox" value="Python"> Python
+        <input type="checkbox" value="Java"> Java
+        <input type="checkbox" value="C++"> C++
+        <br><br>
+
+        <label>Date of Birth:</label><br>
+        <input type="text" id="dob"><br><br>
+
+        <label>Address:</label><br>
+        <textarea id="address"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+
+    </form>
+
+    <h2>Registered Students</h2>
+
+    <table border="1" id="studentTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Course</th>
+            <th>Skills</th>
+            <th>DOB</th>
+            <th>Address</th>
+        </tr>
+    </table>
+
+    
+    <footer>
+        <p>We are proud to provide quality education and training.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
