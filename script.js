@@ -1,84 +1,80 @@
-document.getElementById("registrationForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+let hour = 0;
+let minute = 0;
+let second = 0;
 
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let mobile = document.getElementById("mobile").value.trim();
-    let department = document.getElementById("department").value.trim();
-    let course = document.getElementById("course").value;
-    let dob = document.getElementById("dob").value;
-    let address = document.getElementById("address").value.trim();
+let timer;
 
-    let gender = "";
-    let genders = document.getElementsByName("gender");
+function start()
+{
+    clearInterval(timer);
 
-    for (let i = 0; i < genders.length; i++) {
-        if (genders[i].checked) {
-            gender = genders[i].value;
-        }
+    timer = setInterval(run,1000);
+}
+
+function run()
+{
+    second++;
+
+    if(second==60)
+    {
+        second=0;
+        minute++;
     }
 
-    let skills = [];
-    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-    checkboxes.forEach(function(box) {
-        if (box.checked) {
-            skills.push(box.value);
-        }
-    });
-
-    if (
-        name === "" ||
-        email === "" ||
-        mobile === "" ||
-        department === "" ||
-        course === "" ||
-        dob === "" ||
-        address === ""
-    ) {
-        alert("Please fill all fields.");
-        return;
+    if(minute==60)
+    {
+        minute=0;
+        hour++;
     }
 
-    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    let h=hour;
+    let m=minute;
+    let s=second;
 
-    if (!email.match(emailPattern)) {
-        alert("Enter a valid email address.");
-        return;
+    if(hour<10)
+    {
+        h="0"+hour;
     }
 
-    let mobilePattern = /^[0-9]{10}$/;
-
-    if (!mobile.match(mobilePattern)) {
-        alert("Mobile number must contain exactly 10 digits.");
-        return;
+    if(minute<10)
+    {
+        m="0"+minute;
     }
 
-    if (gender === "") {
-        alert("Please select gender.");
-        return;
+    if(second<10)
+    {
+        s="0"+second;
     }
 
-    if (skills.length === 0) {
-        alert("Select at least one skill.");
-        return;
-    }
+    document.getElementById("time").innerHTML=h+" : "+m+" : "+s;
 
-    let table = document.getElementById("studentTable");
+}
 
-    let row = table.insertRow();
+function stop()
+{
+    clearInterval(timer);
+}
 
-    row.insertCell(0).innerHTML = name;
-    row.insertCell(1).innerHTML = email;
-    row.insertCell(2).innerHTML = mobile;
-    row.insertCell(3).innerHTML = gender;
-    row.insertCell(4).innerHTML = department;
-    row.insertCell(5).innerHTML = course;
-    row.insertCell(6).innerHTML = skills.join(", ");
-    row.insertCell(7).innerHTML = dob;
-    row.insertCell(8).innerHTML = address;
+function reset()
+{
+    clearInterval(timer);
 
-    alert("Student Registered Successfully!");
+    hour=0;
+    minute=0;
+    second=0;
 
-    document.getElementById("registrationForm").reset();
-});
+    document.getElementById("time").innerHTML="00 : 00 : 00";
+
+    document.getElementById("list").innerHTML="";
+}
+
+function lap()
+{
+    let value=document.getElementById("time").innerHTML;
+
+    let item=document.createElement("li");
+
+    item.innerHTML=value;
+
+    document.getElementById("list").appendChild(item);
+}
